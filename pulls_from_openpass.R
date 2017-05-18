@@ -52,19 +52,5 @@ distm (c(p$lon[1], p$lat[1]), c(p$lon[2], p$lat[2]), fun = distHaversine)
 #расстояние друг с другом
 xy  <- cbind(p$lon, p$lat)
 distm(xy)
-# ------------------------------------------------- supplements ------------------------------------------------------
 
 
-"mtcars$type <- rownames(mtcars)
-dplyr::filter(mtcars, grepl("Toyota|Mazda", type))
-mtcars
-
-library(tidyr)
-data(mtcars)
-unite(mtcars, "vs_am", c("vs","am"))
-head(mtcars)
-# Separate is the complement of unite
-mtcars %>%
-  unite(vs_am, vs, am, sep=",")
-%>%
-  separate(vs_am, c("vs", "am"))"
