@@ -53,4 +53,20 @@ distm (c(p$lon[1], p$lat[1]), c(p$lon[2], p$lat[2]), fun = distHaversine)
 xy  <- cbind(p$lon, p$lat)
 distm(xy)
 
+#--------------------------------------------------------------------------------------------------
+a7  <- select(mw, VRPPOP,
+              #  HMA,
+              ENVIR,
+              FREEL,
+              IKT,
+              INNOVCOST,
+              INNOVCOSTMAL)
+
+fit <- factanal(a7, 2, rotation="varimax")
+print(fit, digits=2, cutoff=.3, sort=TRUE)
+# plot factor 1 by factor 2 
+load <- fit$loadings[,1:2] 
+plot(load,type="n") # set up plot 
+text(load,labels=names(a7),cex=.7) # add variable names
+
 
