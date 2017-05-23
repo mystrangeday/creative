@@ -2,17 +2,23 @@ library(shiny)
 
 library(recommenderlab)
 data()
+library(shinydashboard)
+ library(leaflet)
 
-ui <- fluidPage(
-  titlePanel("Креативные кластеры"),
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("",
-                  "",
-                  min = 2,
-                  max = 30,
-                  value = 10)
-    ),
+ header <- dashboardHeader(
+ title = "Креативные кластеры"
+)
+ fluidRow(
+  column(width = 9,
+   box(width = NULL, solidHeader = TRUE,
+    leafletOutput("busmap", height = 500)
+   ),
+   box(width = NULL,
+    uiOutput("numVehiclesTable")
+   )
+  )
+
+ ),
     mainPanel(
       plotOutput("heatMap")
     )
