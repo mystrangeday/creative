@@ -1,14 +1,14 @@
 library(shiny)
 
 library(recommenderlab)
-data(MovieLense)
+data()
 
 ui <- fluidPage(
-  titlePanel("Similarity between users"),
+  titlePanel("Креативные кластеры"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("users",
-                  "Number of users:",
+      sliderInput("",
+                  "",
                   min = 2,
                   max = 30,
                   value = 10)
