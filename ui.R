@@ -11,24 +11,24 @@ library(shinydashboard)
  fluidRow(
   column(width = 9,
    box(width = NULL, solidHeader = TRUE,
-    leafletOutput("busmap", height = 500)
+    leafletOutput("", height = 500)
    ),
    box(width = NULL,
-    uiOutput("numVehiclesTable")
+    uiOutput("map")
    )
   )
 
  ),
     mainPanel(
-      plotOutput("heatMap")
+      plotOutput("map")
     )
   )
 )
 
 server <- function(input, output) {
   output$heatMap <- renderPlot({
-    similarity_users <- similarity(MovieLense[1:input$users, ], method = "cosine", which = "users")
-    image(as.matrix(similarity_users), main = "User similarity")
+    
+    image(main = "Map SPb")
   })
 }
 
