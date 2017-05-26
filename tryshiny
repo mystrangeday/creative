@@ -4,7 +4,10 @@ library(recommenderlab)
 
 ui<-fluidPage("Hello World",
 SliderInput(InputId="num",
-label="Выберите приоритет"
+label="Выберите приоритет (Библиотеки)"
+value=1,min=1,max=5),
+SliderInput(InputId="num",
+label="Выберите приоритет (Музеи)"
 value=1,min=1,max=5),
 uiOutput(OutputId="map")
 )
