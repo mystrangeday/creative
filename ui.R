@@ -13,6 +13,11 @@ library(shinydashboard)
    box(width = NULL, solidHeader = TRUE,
     leafletOutput("", height = 500)
    ),
+         p(
+          class = "text-muted",
+          paste("Note: "
+          )
+        ),
    box(width = NULL,
     uiOutput("map")
    )
