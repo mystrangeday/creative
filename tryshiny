@@ -1,6 +1,6 @@
 library(shiny)
 library(recommenderlab)
-data(iris)
+
 
 ui<-fluidPage("Hello World",
 SliderInput(InputId="num",
