@@ -38,10 +38,8 @@ recc_model
 n_recommended <- 10 # the number of items to recommend to each user
 
 
-#ПИСЬКА
-ml.recommModel <- Recommender (recc_model, Method ="UBCF")
- 
- ml.predict1 <- predict (recc_model,recc_data_test [1:5], n = 5 )
+#ПИСЬКА (PROBLEM IS HERE)
+
 recc_predicted <- predict(object =recc_model, 
                           newdata =recc_data_test, 
                           n = n_recommended)
