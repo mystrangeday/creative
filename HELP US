@@ -1,0 +1,48 @@
+points.f <- read.csv("~/creative/ml-latest-small/TOTAL_POINTS.csv",stringsAsFactors=FALSE)
+areas <- read.csv("~/creative/ml-latest-small/TOTAL_AREAS.csv")
+
+points <- points %>% filter(!is.na(lon))
+areas  <- areas  %>% filter(!is.na(lon))
+
+
+points <- points[,3:4]
+areas <- areas[,3:4]
+
+dist <- distm(points,areas)
+
+d <- data.frame(dist)
+
+d<-sapply(data.frame(dist),as.numeric)
+dist.m <- as(dist, "realRatingMatrix")
+dist.m
+
+
+recommender_models <- recommenderRegistry$get_entries(dataType ="realRatingMatrix")
+
+recommender_models$UBCF_realRatingMatrix$parameters
+
+which_train <- sample(x = c(TRUE, FALSE), 
+                      size = nrow(dist.m),
+                      replace = TRUE, 
+                      prob = c(0.8, 0.2))
+#head(which_train)
+
+recc_data_train <- dist.m[which_train, ]
+recc_data_test <- dist.m[!which_train, ]
+
+recc_model <- Recommender(data = recc_data_train, 
+                          method = "UBCF")
+
+recc_model
+
+n_recommended <- 10 # the number of items to recommend to each user
+
+
+#ПИСЬКА
+ml.recommModel <- Recommender (recc_model, Method ="UBCF")
+ 
+ ml.predict1 <- predict (recc_model,recc_data_test [1:5], n = 5 )
+recc_predicted <- predict(object =recc_model, 
+                          newdata =recc_data_test, 
+                          n = n_recommended)
+recc_predicted
