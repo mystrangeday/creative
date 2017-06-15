@@ -1,13 +1,19 @@
 points <- read.csv("~/creative/ml-latest-small/TOTAL_POINTS.csv",stringsAsFactors=FALSE)
 areas <- read.csv("~/creative/ml-latest-small/TOTAL_AREAS.csv")
 
+library(dplyr)
 points <- points %>% filter(!is.na(lon))
 areas  <- areas  %>% filter(!is.na(lon))
 
+library(recommenderlab)
+library(ggplot2)
+library(data.table)
+library(reshape2)
 
 points <- points[,3:4]
 areas <- areas[,3:4]
 
+library(geosphere)
 dist <- distm(points,areas)
 
 d <- data.frame(dist)
