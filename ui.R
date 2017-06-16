@@ -11,7 +11,8 @@ fluidPage(
   headerPanel("Где построить новый креативный кластер в Санкт-Петербурге?"),
   sidebarLayout(
     sidebarPanel(
-      selectInput("dataset", "Рекомендация",
+      helpText("Выберите категорию, в соответствии с которой будет строиться рекомендация:"),
+      selectInput("dataset", "Рекомендованные к постройке кластеров здания",
                   choices = c(
                     Банкоматы = "hotel_recc",
                     Музеи = "museums_recc",
@@ -23,9 +24,9 @@ fluidPage(
                     Метро = "station_recc", 
                     Театры = "theatre_recc" 
                   ),
-                  selected = c("atm_recc")
+                  selected = c("museums_recc")
           ),
-    selectInput("dataset", "Показать",
+    selectInput("category", "Показать существующие места",
                 choices = c(
                   Банкоматы = "atm",
                   Музеи = "museums",
@@ -37,10 +38,9 @@ fluidPage(
                   Метро = "station", 
                   Театры = "theatre" 
                 ),
-                selected = c("atm")     
+                selected = c("museums")     
    
           ),
-           helpText("Выберите категорию, в соответствии с которой будет строиться рекомендация"),
           submitButton("Update View")
     ),
     mainPanel(
